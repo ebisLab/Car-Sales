@@ -47,11 +47,11 @@ const App = (props) => {
       <div className="box">
         Hi ?
          <Header car={props.car} />
-        {/* <AddedFeatures car={props.car} />
+        <AddedFeatures car={props.car} />
       </div>
       <div className="box">
         <AdditionalFeatures store={props.store} />
-        <Total car={props.car} additionalPrice={props.additionalPrice} /> */} */}
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
     </Provider>
@@ -61,7 +61,9 @@ const App = (props) => {
 const mapStateToProps = state => {
   console.log(state, 'state');
   return {
-    car: state.car
+    car: state.car,
+    store: state.store,
+    additionalPrice: state.additionalPrice
   };
 }
 
