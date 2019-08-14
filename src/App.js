@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStore } from 'redux';
 import {Provider} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
@@ -14,7 +15,7 @@ import { Reducer } from './reducer'
 const store = createStore(Reducer);
 console.log(store)
 
-const App = () => {
+const App = (props) => {
   // const state = {
   //   additionalPrice: 0,
   //   car: {
@@ -44,12 +45,13 @@ const App = () => {
     <Provider store={store}>   {/* define store into provider */}
     <div className="boxes">
       <div className="box">
-        {/* <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        Hi ?
+         <Header car={props.car} />
+        {/* <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures store={state.store} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} /> */}
+        <AdditionalFeatures store={props.store} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} /> */} */}
       </div>
     </div>
     </Provider>
@@ -57,8 +59,10 @@ const App = () => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
-  return {};
+  console.log(state, 'state');
+  return {
+    car: state.car
+  };
 }
 
-export default  /*connect(mapStateToProps, {})*/(App);
+export default  connect(mapStateToProps, {})(App);
