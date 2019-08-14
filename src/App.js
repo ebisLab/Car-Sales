@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStore } from 'redux';
+import {Provider} from 'react-redux';
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
@@ -11,6 +12,7 @@ import { Reducer } from './reducer'
 
 
 const store = createStore(Reducer);
+console.log(store)
 
 const App = () => {
   const state = {
@@ -39,6 +41,7 @@ const App = () => {
   };
 
   return (
+    <Provider store={store}>   {/* define store into provider */}
     <div className="boxes">
       <div className="box">
         <Header car={state.car} />
@@ -49,6 +52,7 @@ const App = () => {
         <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>
+    </Provider>
   );
 };
 
