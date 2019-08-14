@@ -1,37 +1,23 @@
 import React from 'react';
 import { createStore } from 'redux';
-import {Provider} from 'react-redux';
+// import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
+import {toggleAddBtn} from './actions'
 
-import { Reducer } from './reducer'
+// import { Reducer } from './reducer'
 
 
 
-const store = createStore(Reducer);
-console.log(store)
+// const store = createStore(Reducer);
+// console.log(store)
 
 const App = (props) => {
-  // const state = {
-  //   additionalPrice: 0,
-  //   car: {
-  //     price: 26395,
-  //     name: '2019 Ford Mustang',
-  //     image:
-  //       'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
-  //     features: []
-  //   },
-  //   store: [
-  //     { id: 1, name: 'V-6 engine', price: 1500 },
-  //     { id: 2, name: 'Racing detail package', price: 1500 },
-  //     { id: 3, name: 'Premium sound system', price: 500 },
-  //     { id: 4, name: 'Rear spoiler', price: 250 }
-  //   ]
-  // };
+  console.log(props, 'App prps')
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
@@ -42,19 +28,18 @@ const App = (props) => {
   };
 
   return (
-    <Provider store={store}>   {/* define store into provider */}
+    // <Provider store={store}>   {/* define store into provider */}
     <div className="boxes">
       <div className="box">
-        Hi ?
          <Header car={props.car} />
         <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures store={props.store} />
+        <AdditionalFeatures store={props.store} toggleAddBtn={props.toggleAddBtn}/>
         <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
-    </Provider>
+    // </Provider>
   );
 };
 
@@ -67,4 +52,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, {})(App);
+export default  connect(mapStateToProps, {toggleAddBtn})(App);

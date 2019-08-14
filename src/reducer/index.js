@@ -15,11 +15,16 @@ const initialState = {
       { id: 4, name: 'Rear spoiler', price: 250 }
     ]
   
-}
+};
 
 export const Reducer = (state = initialState, action) => {
   switch (action.type) {
 
+    case 'ADD_PRICE':
+      return{
+        ...state,
+        feature: action.payload
+      }
     default:
     return state;
   }
