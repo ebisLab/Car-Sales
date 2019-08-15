@@ -1,5 +1,6 @@
 import {ADD_PRICE} from '../actions';
 import {REMOVE_PRICE} from '../actions'
+import { stat } from 'fs';
 
 const initialState = {
     additionalPrice: 0,
@@ -38,12 +39,12 @@ export const Reducer = (state = initialState, action) => {
       case REMOVE_PRICE:
       return{
         ...state,
-        additionalPrice: state.additionalPrice + action.payload.price,
+        additionalPrice: state.additionalPrice - action.payload.price,
         car: {
           ...state.car,
-          features: [...state.car.features, action.payload]
+          features: state.car.features.filter(list => list.id !== action.payload.id)
         },
-        store: state.store.filter(feat => feat.id !== action.payload.id)
+        store: [...state.store, action.payload] //adds item back into the shelf
         // feature: action.payload
        
       }
