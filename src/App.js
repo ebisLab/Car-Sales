@@ -16,8 +16,8 @@ import {toggleAddBtn} from './actions'
 // const store = createStore(Reducer);
 // console.log(store)
 
-const App = (props) => {
-  console.log(props, 'App prps')
+const App = () => {
+  // console.log(props, 'App prps')
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
@@ -31,25 +31,25 @@ const App = (props) => {
     // <Provider store={store}>   {/* define store into provider */}
     <div className="boxes">
       <div className="box">
-         <Header car={props.car} />
-        <AddedFeatures car={props.car} />
+         <Header/>
+        <AddedFeatures/>
       </div>
       <div className="box">
-        <AdditionalFeatures store={props.store} toggleAddBtn={props.toggleAddBtn}/>
-        <Total car={props.car} additionalPrice={props.additionalPrice} />
+        <AdditionalFeatures/>
+        <Total/>
       </div>
     </div>
     // </Provider>
   );
 };
 
-const mapStateToProps = state => {
-  console.log(state, 'state');
-  return {
-    car: state.car,
-    store: state.store,
-    additionalPrice: state.additionalPrice
-  };
-}
+// const mapStateToProps = state => {
+//   console.log(state, 'state');
+//   return {
+//     car: state.car,
+//     store: state.store,
+//     additionalPrice: state.additionalPrice
+//   };
+// }
 
-export default  connect(mapStateToProps, {toggleAddBtn})(App);
+export default  /*connect(mapStateToProps, {toggleAddBtn})*/(App);

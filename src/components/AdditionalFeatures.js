@@ -1,5 +1,9 @@
 import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
+import { connect } from 'react-redux';
+import {toggleAddBtn} from '../actions';
+
+
 
 const AdditionalFeatures = props => {
 
@@ -20,4 +24,13 @@ const AdditionalFeatures = props => {
   );
 };
 
-export default AdditionalFeatures;
+//making what i have in state and making it equal to that. (like setState)
+const mapStateToProps = state => {
+  console.log(state, 'state');
+  return {
+ store: state.store,
+  };
+}
+
+
+export default connect(mapStateToProps,{})(AdditionalFeatures);
