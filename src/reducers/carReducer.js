@@ -1,4 +1,3 @@
-import { createStore } from "redux"
 import { ADD_FEATURES } from "../actions"
 
 //3. Created a store
@@ -23,17 +22,17 @@ import { ADD_FEATURES } from "../actions"
 
   //calls it one time when app is bootstrapped
 export const carReducer = (state = initialState, action) => {  // initial state is undefined when app starts up, so we initalize state with initialState in the case state is undefined
- 
+ console.log(action.payload, "action payload")
     switch(action.type){
-        
-        case 'ADD_FEATURES':
-            const addPrice ={
-                name: action.payload.name,
-                price: action.payload.price
-            }
+        case ADD_FEATURES:
             return {
                 ...state,
-                car: {...state.car, features: [...state.car.features, addPrice]}
+                car: {
+                    ...state.car,
+                    price: state.car.price + action.payload.price,
+                     features: [...state.car.features,
+                        action.payload
+                        ]}
             }
         case 'REMOVE_FEATURES':
             return{}
@@ -44,5 +43,3 @@ export const carReducer = (state = initialState, action) => {  // initial state 
 
     }
 }
-
-const store = createStore(carReducer)

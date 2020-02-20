@@ -10,7 +10,7 @@ import 'bulma/css/bulma.css';
 import './styles.scss';
 
 const store = createStore(carReducer); //2. defined create store
-console.log('retrieving store', store.getState())
+// console.log('retrieving store', store.getState())
 const rootElement = document.getElementById('root');
 ReactDOM.render(
 <Provider store={store}>
