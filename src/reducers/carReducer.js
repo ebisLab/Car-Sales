@@ -25,8 +25,20 @@ import { ADD_FEATURES } from "../actions"
 export const carReducer = (state = initialState, action) => {  // initial state is undefined when app starts up, so we initalize state with initialState in the case state is undefined
  
     switch(action.type){
+        
         case 'ADD_FEATURES':
-            return {}
+            const addPrice ={
+                name: action.payload.name,
+                price: action.payload.price
+            }
+            return {
+                ...state,
+                car: {...state.car, features: [...state.car.features, addPrice]}
+            }
+        case 'REMOVE_FEATURES':
+            return{}
+        case 'TOTAL_PRICE':
+            return{}
             default:
                 return state;
 
